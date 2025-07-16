@@ -1,218 +1,813 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PixelCrafterz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCrafterz - Design & Writing Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+           --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+ --accent: #fd79a8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    body {
-      font-family: 'Urbanist', sans-serif;
-      background: #003B60;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-    }
-
-    header img {
-      width: 120px;
-      height: auto;
-      margin-bottom: 0.5rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-    }
-
-    header p {
-      font-size: 1rem;
-      color: #cccccc;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #001f3f;
-      padding: 0.7rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      background: #00597A;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background: #00bcd4;
-      color: #003B60;
-    }
-
-    section {
-      padding: 2rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border-left: 5px solid #00bcd4;
-      padding-left: 10px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      background: #ffffff;
-      color: #000;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    th, td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-
-    th {
-      background: #00bcd4;
-      color: white;
-    }
-
-    ol {
-      margin-left: 1.5rem;
-      font-size: 1.1rem;
-    }
-
-    a.contact-link {
-      color: #00e0ff;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    a.contact-link:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background: #001f3f;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 3rem;
-    }
-  </style>
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Packs Section */
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .pack-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .pack-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .pack-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .pack-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .pack-body {
+            padding: 30px;
+        }
+        
+        .pack-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pack-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pack-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pack-features i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* How to Order Section */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -10px;
+            top: 30px;
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .step:last-child::after {
+            display: none;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .contact .section-title h2 {
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 30px;
+            margin-right: 20px;
+            color: var(--accent);
+        }
+        
+        .contact-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .step::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>PixelCrafterz</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#packs">Packs</a></li>
+                    <li><a href="#how-to-order">How to Order</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                   </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <header>
-    <img src="pixel-crafterz-logo.jpg" alt="PixelCrafterz Logo">
-    <h1>PixelCrafterz</h1>
-    <p>Posters, Logos, Websites & Writing – Starting at ₹99</p>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Design & Writing Services That Stand Out</h1>
+                <p>From stunning visuals to compelling content - we craft everything you need to elevate your brand. Starting at just ₹99!</p>
+                <a href="#how-to-order" class="btn">Order Now</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+    </section>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#packs">Packs</a>
-    <a href="#order">Order</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Design Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Poster Design</h3>
+                    <p>Eye-catching posters for Instagram, WhatsApp, events, and special offers.</p>
+                    <div class="price">Starting at ₹99</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <h3>Logo Design</h3>
+                    <p>Bold, memorable logos that represent your brand identity.</p>
+                    <div class="price">Starting at ₹199</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube Thumbnails</h3>
+                    <p>Click-worthy thumbnails that boost your video's visibility.</p>
+                    <div class="price">Starting at ₹149</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Resume Design</h3>
+                    <p>Professional and stylish resume layouts that impress employers.</p>
+                    <div class="price">Starting at ₹249</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Menu/Price Posters</h3>
+                    <p>Beautiful designs for cafés, salons, and other businesses.</p>
+                    <div class="price">Starting at ₹179</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Visiting Cards</h3>
+                    <p>Digital custom visiting cards that make connections memorable.</p>
+                    <div class="price">Starting at ₹129</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gifts"></i>
+                    </div>
+                    <h3>Festival Posters</h3>
+                    <p>Special occasion-based posts for all your festive needs.</p>
+                    <div class="price">Starting at ₹99</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Designing</h3>
+                    <p>Personal or business websites built with HTML/CSS.</p>
+                    <div class="price">Starting at ₹999</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <h3>QR Posters</h3>
+                    <p>Scan & order via QR-code posters for your business.</p>
+                    <div class="price">Starting at ₹199</div>
+                </div>
+                
+                <!-- Writing Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Caption Writing</h3>
+                    <p>5 or 10-pack of engaging captions for your Instagram posts.</p>
+                    <div class="price">Starting at ₹99</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Bio Writing</h3>
+                    <p>Catchy custom Instagram bios that capture attention.</p>
+                    <div class="price">Starting at ₹129</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Resume Writing</h3>
+                    <p>Professional CV content that highlights your strengths.</p>
+                    <div class="price">Starting at ₹299</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Product Descriptions</h3>
+                    <p>Compelling descriptions for your online store products.</p>
+                    <div class="price">Starting at ₹149</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Script Writing</h3>
+                    <p>Engaging scripts for vloggers and YouTubers.</p>
+                    <div class="price">Starting at ₹199</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Assignment Help</h3>
+                    <p>Ethical writing assistance for students.</p>
+                    <div class="price">Starting at ₹249</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="services">
-    <h2>Design Services</h2>
-    <table>
-      <tr><th>Service</th><th>Description</th></tr>
-      <tr><td>Poster Design</td><td>Instagram, WhatsApp, events, offers</td></tr>
-      <tr><td>Logo Design</td><td>Bold logos for your brand</td></tr>
-      <tr><td>YouTube Thumbnail</td><td>Eye-catching thumbnails</td></tr>
-      <tr><td>Resume Design</td><td>Stylish layouts</td></tr>
-      <tr><td>Menu/Price Poster</td><td>For cafés, salons, etc.</td></tr>
-      <tr><td>Visiting Card</td><td>Digital custom cards</td></tr>
-      <tr><td>Festival Posters</td><td>Occasion-based posts</td></tr>
-      <tr><td>Web Designing (HTML)</td><td>Personal or business websites</td></tr>
-      <tr><td>QR Posters</td><td>Scan & order via QR-code posters</td></tr>
-    </table>
+    <!-- Packs Section -->
+    <section id="packs" class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Combo & Branding Packs</h2>
+            </div>
+            <div class="packs-grid">
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <h3>Insta Starter Pack</h3>
+                        <p>Perfect for new Instagram accounts</p>
+                    </div>
+                    <div class="pack-body">
+                        <ul class="pack-features">
+                            <li><i class="fas fa-check"></i> Custom Logo Design</li>
+                            <li><i class="fas fa-check"></i> 2 High-quality Posters</li>
+                            <li><i class="fas fa-check"></i> Engaging Instagram Bio</li>
+                             <li><i class="fas fa-check"s="fas fa-check"></i> 5 Caption Pack</li>
+                        </ul>
+                        <a href="#how-to-order" class="btn">Get This Pack</a>
+                    </div>
+                </div>
+                
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <h3>Resume Power Pack</h3>
+                        <p>Land your dream job</p>
+                    </div>
+                    <div class="pack-body">
+                        <ul class="pack-features">
+                            <li><i class="fas fa-check"></i> Professional Resume Content</li>
+                            <li><i class="fas fa-check"></i> Stylish Resume Design</li>
+                            <li><i class="fas fa-check"></i> Cover Letter Template</li>
+                            <li><i class="fas fa-check"></i> LinkedIn Profile Suggestions</li>
+                        </ul>
+                        <a href="#how-to-order" class="btn">Get This Pack</a>
+                    </div>
+                </div>
+                
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <h3>Business Launch Pack</h3>
+                        <p>Everything to start your business</p>
+                    </div>
+                    <div class="pack-body">
+                        <ul class="pack-features">
+                            <li><i class="fas fa-check"></i> Professional Logo</li>
+                            <li><i class="fas fa-check"></i> Promotional Poster</li>
+                            <li><i class="fas fa-check"></i> Menu/Price Poster</li>
+                            <li><i class="fas fa-check"></i> 5 Product Descriptions</li>
+                        </ul>
+                        <a href="#how-to-order" class="btn">Get This Pack</a>
+                    </div>
+                </div>
+                
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <h3>Influencer Pack</h3>
+                        <p>Boost your social media presence</p>
+                    </div>
+                    <div class="pack-body">
+                        <ul class="pack-features">
+                            <li><i class="fas fa-check"></i> 10 Instagram Captions</li>
+                            <li><i class="fas fa-check"></i> Catchy Bio</li>
+                            <li><i class="fas fa-check"></i> 3 Reels Content Ideas</li>
+                            <li><i class="fas fa-check"></i> 1 YouTube Thumbnail</li>
+                        </ul>
+                        <a href="#how-to-order" class="btn">Get This Pack</a>
+                    </div>
+                </div>
+                
+                <div class="pack-card">
+                    <div class="pack-header">
+                        <h3>Festival Sale Pack</h3>
+                        <p>Perfect for seasonal promotions</p>
+                    </div>
+                    <div class="pack-body">
+                        <ul class="pack-features">
+                            <li><i class="fas fa-check"></i> 3 Festival Posters</li>
+                            <li><i class="fas fa-check"></i> 5 Sale Captions</li>
+                            <li><i class="fas fa-check"></i> WhatsApp Status Designs</li>
+                            <li><i class="fas fa-check"></i> Discount Coupon Design</li>
+                        </ul>
+                        <a href="#how-to-order" class="btn">Get This Pack</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h2 style="margin-top: 3rem;">AI-Powered Writing</h2>
-    <table>
-      <tr><th>Service</th><th>Description</th></tr>
-      <tr><td>Caption Writing</td><td>5 or 10-pack for Instagram</td></tr>
-      <tr><td>Bio Writing</td><td>Catchy custom Instagram bios</td></tr>
-      <tr><td>Resume Writing</td><td>Professional CV content</td></tr>
-      <tr><td>Product Descriptions</td><td>For online stores and sellers</td></tr>
-      <tr><td>Script Writing</td><td>For vloggers, YouTubers, etc.</td></tr>
-      <tr><td>Assignment Help</td><td>Ethical writing for students</td></tr>
-    </table>
-  </section>
+    <!-- How to Order Section -->
+    <section id="how-to-order" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Order</h2>
+                <p>Getting your designs is quick and easy</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Follow Us</h3>
+                    <p>Follow our Instagram @pixel__crafterz to see our work and updates</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>DM us</h3>
+                    <p>Send us a DM on Instagram  with your requirements</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Make Payment</h3>
+                    <p>We'll send you a QR payment scanner for easy payment</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Designs</h3>
+                    <p>Get your designs delivered within 24-48 hours after payment</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="packs">
-    <h2>Combo & Branding Packs</h2>
-    <table>
-      <tr><th>Pack Name</th><th>Includes</th></tr>
-      <tr><td>Insta Starter Pack</td><td>Logo + 2 Posters + Bio + Captions</td></tr>
-      <tr><td>Resume Power Pack</td><td>Resume Content + Design</td></tr>
-      <tr><td>Business Launch Pack</td><td>Logo + Poster + Menu Poster</td></tr>
-      <tr><td>Influencer Pack</td><td>Captions + Bio + 3 Reels Ideas</td></tr>
-      <tr><td>Festival Sale Pack</td><td>3 Posters + Sale Captions</td></tr>
-    </table>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p style="color: rgba(255,255,255,0.8);">We respond fast - DM  to start your order</p>
+           <div style="text-align: center; margin-top: 40px;">
+  <!-- Instagram Order Button -->
+  <a href="https://instagram.com/pixel__crafterz" target="_blank" 
+     style="display: inline-block; background: #e1306c; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: 600; margin: 10px;">
+    <i class="fab fa-instagram"></i> Order on Instagram
+  </a>
 
-  <section id="order">
-    <h2>How to Order</h2>
-    <ol>
-      <li><strong>Follow us on Instagram</strong>: 
-        <a class="contact-link" href="https://instagram.com/pixel__crafterz" target="_blank">@pixel__crafterz</a></li>
-      <li>DM us on Instagram or email: 
-        <a class="contact-link" href="mailto:Crafterzpixel@gmail.com">Crafterzpixel@gmail.com</a></li>
-      <li>We’ll send a <strong>QR payment scanner</strong></li>
-      <li>After payment, we’ll deliver your design in 24–48 hrs</li>
-    </ol>
-  </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a class="contact-link" href="mailto:Crafterzpixel@gmail.com">Crafterzpixel@gmail.com</a></p>
-    <p>Instagram: <a class="contact-link" href="https://instagram.com/pixel__crafterz" target="_blank">@pixel__crafterz</a></p>
-    <p>We respond fast – DM or email to start your order 🚀</p>
-  </section>
 
-  <footer>
-    © 2025 PixelCrafterz • Design your dreams 
-  </footer>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/686c0d46c449c7190f6f395a/1ivj17ngf';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/pixel__crafterz" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:Crafterzpixel@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2025 PixelCrafterz · Design your dream</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-</html>
+           </html>
